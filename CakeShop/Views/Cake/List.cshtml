@@ -1,0 +1,21 @@
+﻿@model CakeShop.Models.ViewModel.CakesListViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cake Shop</title>
+</head>
+<body>
+    <h1>@Model.CurrentCategory</h1>
+    @foreach (var cake in Model.Cakes)
+    {
+        <div>
+            <h2>@cake.Name</h2>
+            <h3>@cake.Price.ToString("c")</h3>
+            <h4>@cake.Category.Name</h4>
+        </div>
+    }
+</body>
+</html> 
