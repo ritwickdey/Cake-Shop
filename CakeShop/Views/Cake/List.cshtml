@@ -4,17 +4,7 @@
 <div class="row">
     @foreach (var cake in Model.Cakes)
     {
-        <div class="col-lg-3 col-md-4 col-sm-8">
-            <div class="card" style="">
-                <img class="card-img-top" src="@cake.ImageThumbnailUrl" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">@cake.Name</h5>
-                    <p class="card-text">@cake.Price.ToString("c")</p>
-                    <p class="card-text">@cake.ShortDescription</p>
-                    <a href="#" class="btn btn-primary">Buy Now!</a>
-                </div>
-            </div>
-        </div>
+        @await Html.PartialAsync("CakeView", cake);
     }
 </div>
 
