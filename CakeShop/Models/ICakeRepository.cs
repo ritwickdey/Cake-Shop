@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CakeShop.Models
 {
     public interface ICakeRepository
     {
-        IEnumerable<Cake> Cakes { get; }
-        IEnumerable<Cake> CakesOfTheWeek { get; }
+        Task<IEnumerable<Cake>> GetCakes();
+        Task<IEnumerable<Cake>> GetCakesOfTheWeek();
 
-        Cake GetCakeById(int cakeId);
+        Task<Cake> GetCakeById(int cakeId);
     }
 }

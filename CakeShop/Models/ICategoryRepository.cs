@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CakeShop.Models
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> Categories { get; }
+        Task<IEnumerable<Category>> GetCategories();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CakeShop.Models;
 using CakeShop.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Threading.Tasks;
 
 namespace CakeShop.Controllers
 {
@@ -18,11 +18,11 @@ namespace CakeShop.Controllers
 
 
         [HttpGet]
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
             var cakesListViewModel = new CakesListViewModel
             {
-                Cakes = _cakeRepository.Cakes,
+                Cakes = await _cakeRepository.GetCakes(),
                 CurrentCategory = "Some Category"
             };
             return View(cakesListViewModel);
