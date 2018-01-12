@@ -1,0 +1,32 @@
+﻿@model ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Cart";
+}
+<h2>Cart</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Cake</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <tr>
+                <td>@item.Cake.Name</td>
+                <td>@item.Qty</td>
+                <td>@item.Cake.Price.ToString("c")</td>
+                <td>@((item.Cake.Price * item.Qty).ToString("c"))</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total: </td>
+            <td>@Model.ShoppingCartTotal.ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>

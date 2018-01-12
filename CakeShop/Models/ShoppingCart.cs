@@ -13,7 +13,7 @@ namespace CakeShop.Models
         private readonly CakeShopDbContext _context;
 
         public string Id { get; set; }
-        //public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         private ShoppingCart(CakeShopDbContext context)
         {
@@ -47,10 +47,12 @@ namespace CakeShop.Models
 
         public async Task<IEnumerable<ShoppingCartItem>> GetShoppingCartItemsAsync()
         {
-            return await _context.ShoppingCartItems
+            ShoppingCartItems = ShoppingCartItems ?? await _context.ShoppingCartItems
                 .Where(e => e.ShoppingCartId == Id)
                 .Include(e => e.Cake)
                 .ToListAsync();
+
+            return ShoppingCartItems;
         }
 
         public async Task ClearCartAsync()
@@ -61,11 +63,23 @@ namespace CakeShop.Models
 
             _context.ShoppingCartItems.RemoveRange(shoppingCartItems);
 
+            ShoppingCartItems = null; //reset
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<decimal> GetShoppingCartTotalAsync()
+        {
+            return (ShoppingCartItems?.Select(c => c.Cake.Price * c.Qty) ?? await _context.ShoppingCartItems
+                .Where(c => c.ShoppingCartId == Id)
+                .Select(c => c.Cake.Price * c.Qty)
+                .ToListAsync())
+                .Sum();
         }
 
         private async Task<int> AddOrRemoveCart(Cake cake, int qty)
         {
+
+
             var shoppingCartItem = await _context.ShoppingCartItems
                             .SingleOrDefaultAsync(s => s.CakeId == cake.Id && s.ShoppingCartId == Id);
 
@@ -90,6 +104,8 @@ namespace CakeShop.Models
             }
 
             await _context.SaveChangesAsync();
+
+            ShoppingCartItems = null; // Reset
 
             return await Task.FromResult(shoppingCartItem.Qty);
         }
