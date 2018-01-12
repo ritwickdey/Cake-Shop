@@ -1,0 +1,12 @@
+﻿body {
+    padding-top: 5rem;
+}
+
+.card {
+    margin: 25px 5px;
+}
+
+.card-img-top {
+    height: 180px;
+    min-width: 242px;
+}
