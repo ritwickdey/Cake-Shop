@@ -17,6 +17,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\DbInitializer.cs" />
+  </ItemGroup>
   
   <Target Name="BuildClientAssets" BeforeTargets="Publish">
     <Exec Command="npm install" />

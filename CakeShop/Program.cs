@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore;
+﻿using CakeShop.Models;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CakeShop
 {
@@ -7,7 +9,14 @@ namespace CakeShop
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var host = BuildWebHost(args);
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<CakeShopDbContext>();
+                DbInitializer.SeedDatabase(context);
+            }
+            host.Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

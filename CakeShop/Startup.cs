@@ -42,6 +42,9 @@ namespace CakeShop
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
 
+            //var context = app.ApplicationServices.GetRequiredService<CakeShopDbContext>();
+
+            //DbInitializer.SeedDatabase(context);
         }
     }
 }
