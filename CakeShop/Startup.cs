@@ -1,6 +1,7 @@
 ﻿using CakeShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,10 +23,16 @@ namespace CakeShop
             services.AddTransient<ICakeRepository, CakeRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IShoppingCart>(sp => ShoppingCart.GetCart(sp));
+
             services.AddDbContext<CakeShopDbContext>(ctx =>
             {
                 ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddMemoryCache();
+            services.AddSession();
 
         }
 
@@ -39,12 +46,9 @@ namespace CakeShop
             }
 
             app.UseStatusCodePages();
+            app.UseSession();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
-
-            //var context = app.ApplicationServices.GetRequiredService<CakeShopDbContext>();
-
-            //DbInitializer.SeedDatabase(context);
         }
     }
 }
