@@ -1,6 +1,7 @@
 ﻿using CakeShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,8 +19,13 @@ namespace CakeShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<ICakeRepository, MockCakeRepository>();
-            services.AddTransient<ICategoryRepository, MockCategoryRepository>();
+            services.AddTransient<ICakeRepository, CakeRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
+            services.AddDbContext<CakeShopDbContext>(ctx =>
+            {
+                ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
         }
 
