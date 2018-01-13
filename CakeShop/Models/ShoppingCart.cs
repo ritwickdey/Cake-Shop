@@ -22,11 +22,18 @@ namespace CakeShop.Models
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
-            var session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var httpContext = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
             var context = services.GetRequiredService<CakeShopDbContext>();
-            var cardId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
 
-            session.SetString("CartId", cardId);
+            var request = httpContext.Request;
+            var response = httpContext.Response;
+
+            var cardId = request.Cookies["CartId-cookie"] ?? Guid.NewGuid().ToString();
+
+            response.Cookies.Append("CartId-cookie", cardId, new CookieOptions
+            {
+                Expires = DateTime.Now.AddMonths(2)
+            });
 
             return new ShoppingCart(context)
             {

@@ -32,7 +32,7 @@ namespace CakeShop
             });
 
             services.AddMemoryCache();
-            services.AddSession();
+            //services.AddSession();
 
         }
 
@@ -46,7 +46,7 @@ namespace CakeShop
             }
 
             app.UseStatusCodePages();
-            app.UseSession();
+            //app.UseSession();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
