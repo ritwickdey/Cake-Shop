@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+main.container {
+    min-height:84vh;
+}
+
 .carousel-caption {
     background-color: #F0433A;
     width: 100%;
@@ -33,7 +37,6 @@
     display: block;
     position: absolute;
     width: 100%;
-    
     min-height: 35px;
     color: #fff;
     border-top: 3px solid #f0433a;
