@@ -19,11 +19,20 @@ namespace CakeShop.Models
             return await _context.Cakes.FirstAsync(e => e.Id == cakeId);
         }
 
-        public async Task<IEnumerable<Cake>> GetCakes()
+
+        public async Task<IEnumerable<Cake>> GetCakes(string category = null)
         {
-            return await _context.Cakes
-                .Include(e => e.Category)
-                .ToListAsync();
+
+            var query = _context.Cakes
+                .Include(c => c.Category)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                query = query.Where(c => c.Category.Name == category);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<Cake>> GetCakesOfTheWeek()

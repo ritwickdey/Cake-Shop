@@ -48,7 +48,20 @@ namespace CakeShop
             app.UseStatusCodePages();
             app.UseSession();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+
+            app.UseMvc(routes =>
+            {
+
+                //routes.MapRoute(
+                //    name: "categoryFilter",
+                //    template: "Cakes/{action}/{category?}",
+                //    defaults: new { Controller = "Cake", action = "List" });
+
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+
+            });
         }
     }
 }

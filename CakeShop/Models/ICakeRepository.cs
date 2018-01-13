@@ -5,7 +5,7 @@ namespace CakeShop.Models
 {
     public interface ICakeRepository
     {
-        Task<IEnumerable<Cake>> GetCakes();
+        Task<IEnumerable<Cake>> GetCakes(string category = null);
         Task<IEnumerable<Cake>> GetCakesOfTheWeek();
 
         Task<Cake> GetCakeById(int cakeId);

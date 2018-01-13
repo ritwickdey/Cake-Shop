@@ -8,7 +8,7 @@ namespace CakeShop.Models
     {
         private readonly ICategoryRepository _categoryRepository = new MockCategoryRepository();
 
-        public async Task<IEnumerable<Cake>> GetCakes()
+        public async Task<IEnumerable<Cake>> GetCakes(string category = null)
         {
             var cakes = new List<Cake>
             {
