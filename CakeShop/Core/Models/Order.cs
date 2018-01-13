@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +8,9 @@ namespace CakeShop.Core.Models
     public class Order
     {
         public int Id { get; set; }
+
+        [Required]
+        public DateTime OrderPlacedTime { get; set; }
 
         [StringLength(255)]
         [Required]

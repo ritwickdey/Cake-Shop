@@ -11,9 +11,10 @@ using System;
 namespace CakeShop.Migrations
 {
     [DbContext(typeof(CakeShopDbContext))]
-    partial class CakeShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180113204540_Add_OrderPlacedTime_Coloum_Order")]
+    partial class Add_OrderPlacedTime_Coloum_Order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
