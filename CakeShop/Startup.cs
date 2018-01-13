@@ -23,6 +23,7 @@ namespace CakeShop
             services.AddMvc();
             services.AddTransient<ICakeRepository, CakeRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IShoppingCartService>(sp => ShoppingCartService.GetCart(sp));
