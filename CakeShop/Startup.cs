@@ -25,7 +25,7 @@ namespace CakeShop
             services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddScoped<IShoppingCartService>(sp => ShoppingCartService.GetCart(sp));
 
             services.AddDbContext<CakeShopDbContext>(ctx =>
             {

@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Persistence
 {
-    public class ShoppingCart : IShoppingCart
+    public class ShoppingCartService : IShoppingCartService
     {
         private readonly CakeShopDbContext _context;
 
         public string Id { get; set; }
         public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        private ShoppingCart(CakeShopDbContext context)
+        private ShoppingCartService(CakeShopDbContext context)
         {
             _context = context;
         }
 
-        public static ShoppingCart GetCart(IServiceProvider services)
+        public static ShoppingCartService GetCart(IServiceProvider services)
         {
             var httpContext = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
             var context = services.GetRequiredService<CakeShopDbContext>();
@@ -36,7 +36,7 @@ namespace CakeShop.Persistence
                 Expires = DateTime.Now.AddMonths(2)
             });
 
-            return new ShoppingCart(context)
+            return new ShoppingCartService(context)
             {
                 Id = cardId
             };

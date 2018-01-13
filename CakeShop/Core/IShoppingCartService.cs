@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Core.Models
 {
-    public interface IShoppingCart
+    public interface IShoppingCartService
     {
         string Id { get; set; }
         IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
