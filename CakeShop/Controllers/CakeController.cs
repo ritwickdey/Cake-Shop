@@ -28,5 +28,14 @@ namespace CakeShop.Controllers
             };
             return View(cakesListViewModel);
         }
+
+        [HttpGet("details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+
+            var cake = await _cakeRepository.GetCakeById(id);
+
+            return View(cake);
+        }
     }
 }

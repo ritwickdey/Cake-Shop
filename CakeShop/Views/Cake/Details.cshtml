@@ -1,0 +1,19 @@
+﻿@model Cake
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>@Model.Name</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <img class="img-thumbnail" src="@Model.ImageUrl" alt="@Model.Name" />
+        <p></p>
+    </div>
+    <div class="col-md-6">
+        <h4>@Model.Name</h4>
+        <p><i>@Model.Price.ToString("c")</i></p>
+        <p>@Model.ShortDescription</p>
+        <p>@Model.LongDescription</p>
+        <button class="btn btn-primary buy-now-btn">Add To Cart</button>
+    </div>
+</div>
