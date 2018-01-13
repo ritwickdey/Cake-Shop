@@ -1,16 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CakeShop.Models;
+using CakeShop.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CakeShop.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ICakeRepository _cakeRepository;
+
+        public HomeController(ICakeRepository cakeRepository)
         {
-            return View();
+            _cakeRepository = cakeRepository;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            return View(new HomeViewModel
+            {
+                CakeOfTheWeek = await _cakeRepository.GetCakesOfTheWeek()
+            });
         }
     }
 }

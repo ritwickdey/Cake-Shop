@@ -1,13 +1,13 @@
 ﻿@model Cake
 
-<div class="col-lg-3 col-md-4 col-sm-8">
+<div class="col-md-4 col-sm-8">
     <div class="card" style="">
         <img class="card-img-top" src="@Model.ImageThumbnailUrl" alt="@Model.Name">
         <div class="card-body">
             <h5 class="card-title">@Model.Name</h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
             <p class="card-text">@Model.ShortDescription</p>
-            <a href="#" class="btn btn-primary">Buy Now!</a>
+            <a href="#" class="btn btn-primary buy-now-btn">Buy Now!</a>
         </div>
     </div>
 </div>
