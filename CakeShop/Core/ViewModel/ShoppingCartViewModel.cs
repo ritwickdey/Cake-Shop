@@ -1,6 +1,6 @@
 ﻿using CakeShop.Core.Models;
 
-namespace CakeShop.Models.ViewModel
+namespace CakeShop.Core.ViewModel
 {
     public class ShoppingCartViewModel
     {

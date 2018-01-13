@@ -1,7 +1,7 @@
 ﻿using CakeShop.Core.Models;
 using System.Collections.Generic;
 
-namespace CakeShop.Models.ViewModel
+namespace CakeShop.Core.ViewModel
 {
     public class HomeViewModel
     {

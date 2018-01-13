@@ -1,5 +1,5 @@
 ﻿using CakeShop.Core.Models;
-using CakeShop.Models.ViewModel;
+using CakeShop.Core.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
