@@ -29,8 +29,20 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        @*<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Catagory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Vanilla Cakes">Vanilla Cakes</a>
+                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Chocolate Cakes">Chocolate Cakes</a>
+                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Fruit Cakes">Fruit Cakes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-controller="/cakes" asp-action="">All Cakes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="contact" asp-action="">Contact Us</a>
                     </li>
                 </ul>
 
@@ -40,7 +52,7 @@
                             Cart
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             @await Component.InvokeAsync("ShoppingCartSummary")
-                            <span class="sr-only">(current)</span>
+
                         </a>
                     </li>
                 </ul>
@@ -55,7 +67,10 @@
 
     <footer class="footer">
         <div class="container">
-            <p>Copyright (c) to XYZ Ptv. LTD 2018-2020</p>
+            <p class="d-inline float-left">Copyright (c) 2018-@(DateTime.Now.Year + 1)</p>
+            <p class="d-inline float-right">
+                Ritwick Dey
+            </p>
         </div>
         @*<email address="example@example.com" content="Contact Us"></email>*@
     </footer>

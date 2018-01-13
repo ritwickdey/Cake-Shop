@@ -31,6 +31,21 @@ main.container {
     background-color: #820333;
     border-bottom: 3px solid #f0433a;
 }
+.navbar .navbar-nav {
+    margin-top:2px;
+}
+
+ .navbar .dropdown-item{
+     transition:all 0.2s ease-in-out;
+ }
+
+    .navbar .dropdown-item:focus, 
+    .navbar .dropdown-item:hover {
+        color: #16181b;
+        text-decoration: none;
+        background-color: #820333;
+        color: #fff;
+    }
 
 .footer {
     background-color: #820333;
