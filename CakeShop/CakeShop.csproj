@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Models\CakeRepository.cs" />
+    <Content Include="Persistence\CakeRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Models\DbInitializer.cs" />
+    <None Include="Persistence\DbInitializer.cs" />
   </ItemGroup>
   
   <Target Name="BuildClientAssets" BeforeTargets="Publish">
