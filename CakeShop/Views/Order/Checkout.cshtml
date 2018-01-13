@@ -1,0 +1,58 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Checkout";
+}
+<h2>Checkout</h2>
+<div class="row">
+    <div class="col-md-6 col-lg-4">
+        <form asp-controller="order" asp-action="checkout" method="post">
+
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine1"></label>
+                <input asp-for="AddressLine1" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressLine2"></label>
+                <input asp-for="AddressLine2" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="State"></label>
+                <input asp-for="State" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode"></label>
+                <input asp-for="ZipCode" class="form-control" />
+            </div>
+
+            <button class="btn btn-primary buy-now-btn">Checkout</button>
+
+        </form>
+    </div>
+</div>
+
+
+<br /><br />
