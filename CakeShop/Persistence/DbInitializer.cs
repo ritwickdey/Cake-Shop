@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CakeShop.Models
+namespace CakeShop.Persistence
 {
     public static class DbInitializer
     {

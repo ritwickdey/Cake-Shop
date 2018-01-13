@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CakeShop.Models
+namespace CakeShop.Persistence
 {
     public class CategoryRepository : ICategoryRepository
     {

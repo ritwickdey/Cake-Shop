@@ -1,7 +1,7 @@
 ﻿using CakeShop.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CakeShop.Models
+namespace CakeShop.Persistence
 {
     public class CakeShopDbContext : DbContext
     {

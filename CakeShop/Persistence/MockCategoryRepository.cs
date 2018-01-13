@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CakeShop.Models
+namespace CakeShop.Persistence
 {
     public class MockCategoryRepository : ICategoryRepository
     {

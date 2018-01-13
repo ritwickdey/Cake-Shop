@@ -1,4 +1,4 @@
-﻿using CakeShop.Models;
+﻿using CakeShop.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
