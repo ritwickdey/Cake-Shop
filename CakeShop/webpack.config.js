@@ -19,7 +19,7 @@ module.exports = function (env) {
             extensions: ['.ts', '.tsx', '.js', '.jsx']
         },
         plugins: [
-            new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' })
+            new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', jquery: 'jquery' })
         ],
         module: {
             rules: [

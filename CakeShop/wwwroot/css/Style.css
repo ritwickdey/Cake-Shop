@@ -1,5 +1,6 @@
 ﻿body {
     padding-top: 5rem;
+    background-color : #eee;
 }
 
 .card {
@@ -10,3 +11,37 @@
     height: 180px;
     min-width: 242px;
 }
+
+.carousel-item img {
+    width: 100%;
+}
+
+.carousel-caption {
+    background-color: #F0433A;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.navbar {
+    background-color: #820333;
+    border-bottom: 3px solid #f0433a;
+}
+
+.footer {
+    background-color: #820333;
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    min-height: 35px;
+    color: #fff;
+    border-top: 3px solid #f0433a;
+}
+.footer p {
+    margin: 0.5rem auto;
+    font-size: 0.9rem;
+}
+
+
+

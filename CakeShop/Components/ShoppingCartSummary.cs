@@ -16,7 +16,6 @@ namespace CakeShop.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var items = await _shoppingCart.GetShoppingCartItemsAsync();
             return View(new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,

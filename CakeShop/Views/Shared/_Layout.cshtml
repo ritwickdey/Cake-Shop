@@ -9,14 +9,15 @@
     <environment names="Development">
         <script src="~/dist/main.js"></script>
     </environment>
-    <environment names="Staging,Production">
+    <environment names="Production">
         <script src="~/dist/main.js" asp-append-version="true"></script>
     </environment>
+
 
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">Cake Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +27,12 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        @*<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>*@
                     </li>
-                    <li class="nav-item">
+                </ul>
+
+                <ul class="navbar-nav ">
+                    <li>
                         <a class="nav-link" href="#">
                             Cart
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -46,9 +50,14 @@
         @RenderBody()
     </main>
 
-    <footer>
-        <email address="example@example.com" content="Contact Us"></email>
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright (c) to XYZ Ptv. LTD 2018-2020</p>
+        </div>
+        @*<email address="example@example.com" content="Contact Us"></email>*@
     </footer>
+
+    @RenderSection("scripts", false)
 
 </body>
 

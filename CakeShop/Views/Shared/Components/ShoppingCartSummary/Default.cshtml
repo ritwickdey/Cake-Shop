@@ -1,7 +1,7 @@
 ﻿
 @model ShoppingCartViewModel
 
-@if (Model.ShoppingCart.ShoppingCartItems.Count() > 0)
+@if (Model.ShoppingCart.ShoppingCartItems?.Count() > 0)
 {
     <span class="badge badge-warning">@Model.ShoppingCartTotal</span>
 }
