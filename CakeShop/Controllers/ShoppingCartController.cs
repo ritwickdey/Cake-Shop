@@ -18,14 +18,17 @@ namespace CakeShop.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var cartItems = await _shoppingCart.GetShoppingCartItemsAsync();
-
-
-            return View(new ShoppingCartViewModel
+            await _shoppingCart.GetShoppingCartItemsAsync();
+            var shoppingCartCountTotal = await _shoppingCart.GetCartCountAndTotalAmmountAsync();
+            var shoppingCartViewModel = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
-                ShoppingCartTotal = await _shoppingCart.GetShoppingCartTotalAsync()
-            });
+                ShoppingCartItemsTotal = shoppingCartCountTotal.ItemCount,
+                ShoppingCartTotal = shoppingCartCountTotal.TotalAmmount,
+            };
+
+
+            return View(shoppingCartViewModel);
         }
 
         public async Task<IActionResult> AddToShoppingCart(int cakeId)

@@ -16,11 +16,14 @@ namespace CakeShop.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(new ShoppingCartViewModel
+            var ShoppingCartCountTotal = await _shoppingCart.GetCartCountAndTotalAmmountAsync();
+            var shoppingCartViewModel = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
-                ShoppingCartTotal = await _shoppingCart.GetShoppingCartTotalAsync()
-            });
+                ShoppingCartItemsTotal = ShoppingCartCountTotal.ItemCount,
+                ShoppingCartTotal = ShoppingCartCountTotal.TotalAmmount
+            };
+            return View(shoppingCartViewModel);
         }
 
     }

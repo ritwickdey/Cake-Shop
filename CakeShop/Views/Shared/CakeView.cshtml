@@ -4,10 +4,17 @@
     <div class="card" style="">
         <img class="card-img-top" src="@Model.ImageThumbnailUrl" alt="@Model.Name">
         <div class="card-body">
-            <h5 class="card-title">@Model.Name</h5>
+            <h5 class="card-title">
+                <a asp-controller="cakes" asp-action="details" asp-route-id="@Model.Id">@Model.Name</a>
+            </h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
             <p class="card-text">@Model.ShortDescription</p>
-            <a href="#" class="btn btn-primary buy-now-btn">Buy Now!</a>
+            <a class="btn btn-primary buy-now-btn"
+               asp-action="AddToShoppingCart"
+               asp-controller="ShoppingCart"
+               asp-route-cakeId="@Model.Id">
+                Add To Cart
+            </a>
         </div>
     </div>
 </div>

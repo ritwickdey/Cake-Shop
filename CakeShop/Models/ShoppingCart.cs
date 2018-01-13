@@ -67,13 +67,16 @@ namespace CakeShop.Models
             await _context.SaveChangesAsync();
         }
 
-        public async Task<decimal> GetShoppingCartTotalAsync()
+        public async Task<(int ItemCount, decimal TotalAmmount)> GetCartCountAndTotalAmmountAsync()
         {
-            return (ShoppingCartItems?.Select(c => c.Cake.Price * c.Qty) ?? await _context.ShoppingCartItems
+            var subTotal = ShoppingCartItems?
+                .Select(c => c.Cake.Price * c.Qty) ??
+                await _context.ShoppingCartItems
                 .Where(c => c.ShoppingCartId == Id)
                 .Select(c => c.Cake.Price * c.Qty)
-                .ToListAsync())
-                .Sum();
+                .ToListAsync();
+
+            return (subTotal.Count(), subTotal.Sum());
         }
 
         private async Task<int> AddOrRemoveCart(Cake cake, int qty)

@@ -12,6 +12,6 @@ namespace CakeShop.Models
         Task ClearCartAsync();
         Task<IEnumerable<ShoppingCartItem>> GetShoppingCartItemsAsync();
         Task<int> RemoveFromCartAsync(Cake cake);
-        Task<decimal> GetShoppingCartTotalAsync();
+        Task<(int ItemCount, decimal TotalAmmount)> GetCartCountAndTotalAmmountAsync();
     }
 }

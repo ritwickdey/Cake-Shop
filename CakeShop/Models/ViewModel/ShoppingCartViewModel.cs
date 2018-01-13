@@ -4,5 +4,6 @@
     {
         public IShoppingCart ShoppingCart { get; set; }
         public decimal ShoppingCartTotal { get; set; }
+        public int ShoppingCartItemsTotal { get; set; }
     }
 }

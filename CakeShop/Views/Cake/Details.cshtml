@@ -14,6 +14,11 @@
         <p><i>@Model.Price.ToString("c")</i></p>
         <p>@Model.ShortDescription</p>
         <p>@Model.LongDescription</p>
-        <button class="btn btn-primary buy-now-btn">Add To Cart</button>
+        <a class="btn btn-primary buy-now-btn"
+           asp-action="AddToShoppingCart"
+           asp-controller="ShoppingCart"
+           asp-route.cakeId="@Model.Id">
+            Add To Cart
+        </a>
     </div>
 </div>
