@@ -1,4 +1,5 @@
-﻿using CakeShop.Models;
+﻿using CakeShop.Core.Models;
+using CakeShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

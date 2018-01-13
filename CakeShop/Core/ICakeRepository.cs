@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CakeShop.Models
+namespace CakeShop.Core.Models
 {
     public interface ICakeRepository
     {

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Models
+namespace CakeShop.Core.Models
 {
     public class Order
     {

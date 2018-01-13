@@ -1,4 +1,6 @@
-﻿namespace CakeShop.Models.ViewModel
+﻿using CakeShop.Core.Models;
+
+namespace CakeShop.Models.ViewModel
 {
     public class ShoppingCartViewModel
     {

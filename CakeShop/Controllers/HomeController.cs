@@ -1,4 +1,4 @@
-﻿using CakeShop.Models;
+﻿using CakeShop.Core.Models;
 using CakeShop.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace CakeShop.Models
+﻿namespace CakeShop.Core.Models
 {
     public class Cake
     {
