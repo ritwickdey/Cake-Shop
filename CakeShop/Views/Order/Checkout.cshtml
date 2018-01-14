@@ -1,31 +1,40 @@
-﻿@model Order
+﻿@model OrderDto
 @{
     ViewData["Title"] = "Checkout";
 }
-<h2>Checkout</h2>
 <div class="row">
-    <div class="col-md-6 col-lg-4">
+
+    <div class="col-md-6 col-lg-6 offset-lg-3">
+        <h2>Checkout</h2>
+        <div class="col-md-12">
+            <div asp-validation-summary="ModelOnly"></div>
+        </div>
         <form asp-controller="order" asp-action="checkout" method="post">
 
             <div class="form-group">
                 <label asp-for="FirstName"></label>
                 <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LastName"></label>
                 <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AddressLine1"></label>
                 <input asp-for="AddressLine1" class="form-control" />
+                <span asp-validation-for="AddressLine1"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AddressLine2"></label>
@@ -34,18 +43,22 @@
             <div class="form-group">
                 <label asp-for="City"></label>
                 <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City"></span>
             </div>
             <div class="form-group">
                 <label asp-for="State"></label>
                 <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Country"></label>
                 <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ZipCode"></label>
                 <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode"></span>
             </div>
 
             <button class="btn btn-primary buy-now-btn">Checkout</button>

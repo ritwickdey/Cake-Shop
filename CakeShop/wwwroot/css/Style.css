@@ -84,3 +84,12 @@ main.container {
     }
 
 
+.field-validation-error {
+    display: block;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0 0 0.55rem 0.55rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
