@@ -17,7 +17,7 @@
 }
 
 main.container {
-    min-height:84vh;
+    min-height: 82vh;
 }
 
 .carousel-caption {
@@ -85,7 +85,7 @@ main.container {
         font-style: italic
     }
 
-
+.validation-summary-errors,
 .field-validation-error {
     display: block;
     padding: 0.55rem 1.25rem;
@@ -95,3 +95,12 @@ main.container {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+
+.validation-summary-errors {
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+    .validation-summary-errors > ul:last-child {
+        margin: 4px;
+    }

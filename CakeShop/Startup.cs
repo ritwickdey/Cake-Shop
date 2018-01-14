@@ -1,4 +1,5 @@
-﻿using CakeShop.Core.Models;
+﻿using AutoMapper;
+using CakeShop.Core.Models;
 using CakeShop.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,7 @@ namespace CakeShop
             {
                 ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddAutoMapper();
 
             services.AddMemoryCache();
             //services.AddSession();

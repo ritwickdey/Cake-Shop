@@ -21,9 +21,10 @@ namespace CakeShop.Persistence
         public async Task CreateOrderAsync(Order order)
         {
             order.OrderPlacedTime = DateTime.Now;
-            _context.Orders.Add(order);
+            await _context.Orders.AddAsync(order);
 
             var shoppingCartItems = await _shoppingCartService.GetShoppingCartItemsAsync();
+            order.OrderTotal = (await _shoppingCartService.GetCartCountAndTotalAmmountAsync()).TotalAmmount;
 
             await _context.OrderDetails.AddRangeAsync(shoppingCartItems.Select(e => new OrderDetail
             {
