@@ -43,5 +43,11 @@ namespace CakeShop.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> RemoveAllCart()
+        {
+            await _shoppingCart.ClearCartAsync();
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 5rem;
-    background-color : #eee;
+    background-color: #f8f9fa;
 }
 
 .card {
@@ -64,11 +64,13 @@ main.container {
 .buy-now-btn {
     background-color: #F0433A;
     border: 1px solid #F0433A;
+    color: #fff;
 }
     .buy-now-btn:hover,
     .buy-now-btn:active {
         background-color: #820333;
         border: 1px solid #820333;
+        color: #fff;
     }
 
 .weekly-getting,
@@ -88,7 +90,7 @@ main.container {
     display: block;
     padding: 0.55rem 1.25rem;
     border: 1px solid transparent;
-    border-radius: 0 0 0.55rem 0.55rem;
+    border-radius: 0 0 0.25rem 0.25rem;
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;

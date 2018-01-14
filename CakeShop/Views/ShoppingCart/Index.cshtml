@@ -2,8 +2,8 @@
 @{
     ViewData["Title"] = "Cart";
 }
-<h2>Cart</h2>
-<table class="table table-bordered table-striped">
+<h2>Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </h2>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Cake</th>
@@ -27,6 +27,21 @@
         <tr>
             <td colspan="3">Total: </td>
             <td>@Model.ShoppingCartTotal.ToString("c")</td>
+        </tr>
+        <tr style="border:0">
+            <td>
+                <a class="btn btn-link text-dark" asp-action="RemoveAllCart">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    Clear Cart
+                </a>
+            </td>
+            <td colspan="2"></td>
+            <td class="text-center">
+                <a class="btn buy-now-btn" asp-action="checkout" asp-controller="order">
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    Checkout
+                </a>
+            </td>
         </tr>
     </tfoot>
 </table>
