@@ -1,7 +1,13 @@
-﻿body {
+﻿:root {
+    --color1: #F0433A;
+    --color2: #820333;
+}
+
+body {
     padding-top: 5rem;
     background-color: #f8f9fa;
 }
+
 
 .card {
     margin: 25px 0;
@@ -30,15 +36,15 @@ main.container {
 }
 
 .carousel-caption {
-    background-color: #F0433A;
+    background-color:var(--color1);
     width: 100%;
     position: absolute;
     left: 0;
     bottom: 0;
 }
 .navbar {
-    background-color: #820333;
-    border-bottom: 3px solid #f0433a;
+    background-color: var(--color2);
+    border-bottom: 3px solid var(--color1);
 }
 .navbar .navbar-nav {
     margin-top:2px;
@@ -52,23 +58,36 @@ main.container {
     .navbar .dropdown-item:hover {
         color: #16181b;
         text-decoration: none;
-        background-color: #820333;
+        background-color: var(--color2);
         color: #fff;
     }
 
 .footer {
-    background-color: #820333;
+    background-color: var(--color2);
     display: block;
     position: absolute;
     width: 100%;
     min-height: 35px;
     color: #fff;
-    border-top: 3px solid #f0433a;
+    border-top: 3px solid var(--color1);
 }
 .footer p {
     margin: 0.5rem auto;
     font-size: 0.9rem;
 }
+
+.carousel {
+    box-shadow: rgba(0, 0, 0, 0.25) 6px 6px 16px 0px;
+}
+
+.btn {
+    transition:all 0.3s ease-in-out;
+}
+
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: rgba(0, 0, 0, 0.35) 4px 3px 7px 0px;
+    }
 
 .btn:focus {
     outline: none;
@@ -76,14 +95,14 @@ main.container {
 }
 
 .buy-now-btn {
-    background-color: #F0433A;
-    border: 1px solid #F0433A;
+    background-color: var(--color1);
+    border: 1px solid var(--color1);
     color: #fff;
 }
     .buy-now-btn:hover,
     .buy-now-btn:active {
-        background-color: #820333;
-        border: 1px solid #820333;
+        background-color: var(--color2);
+        border: 1px solid var(--color2);
         color: #fff;
     }
 
