@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -52,6 +53,10 @@ namespace CakeShop.Core.Models
         public string Email { get; set; }
 
         public decimal OrderTotal { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+        public IdentityUser User { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
