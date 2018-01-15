@@ -61,6 +61,11 @@ main.container {
     font-size: 0.9rem;
 }
 
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .buy-now-btn {
     background-color: #F0433A;
     border: 1px solid #F0433A;

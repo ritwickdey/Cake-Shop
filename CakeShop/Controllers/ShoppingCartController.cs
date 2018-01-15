@@ -31,6 +31,7 @@ namespace CakeShop.Controllers
             return View(shoppingCartViewModel);
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddToShoppingCart(int cakeId)
         {
             var selectedCake = await _cakeRepository.GetCakeById(cakeId);
