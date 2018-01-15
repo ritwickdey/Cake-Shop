@@ -29,18 +29,7 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Catagory
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Vanilla Cakes">Vanilla Cakes</a>
-                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Chocolate Cakes">Chocolate Cakes</a>
-                            <a class="dropdown-item" asp-controller="/cakes" asp-action="Fruit Cakes">Fruit Cakes</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" asp-controller="/cakes" asp-action="">All Cakes</a>
-                        </div>
-                    </li>
+                    @Html.Partial("Category")
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="contact" asp-action="">Contact Us</a>
                     </li>
