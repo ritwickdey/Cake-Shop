@@ -48,6 +48,46 @@ namespace CakeShop.Controllers
             return View(loginViewModel);
         }
 
+        public IActionResult Register([FromQuery]string returnUrl)
+        {
+            return View(new RegisterViewModel
+            {
+                ReturnUrl = returnUrl
+            });
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Register([FromForm]RegisterViewModel registerViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(registerViewModel);
+            }
+
+            var user = new IdentityUser
+            {
+                Email = registerViewModel.Email,
+                UserName = registerViewModel.UserName
+            };
+
+            var result = await _userManager.CreateAsync(user, registerViewModel.Password);
+            if (result.Succeeded)
+            {
+                return await Login(new LoginViewModel
+                {
+                    Email = registerViewModel.Email,
+                    Password = registerViewModel.Password,
+                    ReturnUrl = registerViewModel.ReturnUrl
+                });
+
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View(registerViewModel);
+        }
     }
 }

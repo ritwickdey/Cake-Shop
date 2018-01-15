@@ -38,8 +38,13 @@ namespace CakeShop
 
             services.AddMemoryCache();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<CakeShopDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                options.Password.RequireUppercase = false;
+            })
+            .AddEntityFrameworkStores<CakeShopDbContext>();
 
             //services.AddSession();
 
