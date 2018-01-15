@@ -41,7 +41,7 @@ namespace CakeShop.Persistence
                     Category = categories[1],
                     ImageUrl ="/img/chocolate-cake4.jpg",
                     InStock = true,
-                    IsCakeOfTheWeek = false,
+                    IsCakeOfTheWeek = true,
                     ImageThumbnailUrl ="/img/chocolate-cake4.jpg"
                 },
                 new Cake
@@ -53,14 +53,14 @@ namespace CakeShop.Persistence
                     Category = categories[1],
                     ImageUrl ="/img/chocolate-cake3.jpg",
                     InStock = true,
-                    IsCakeOfTheWeek = true,
+                    IsCakeOfTheWeek = false,
                     ImageThumbnailUrl ="/img/chocolate-cake3.jpg"
                 },
                 new Cake
                 {
                     Name ="Red Velvet Cake",
                     Price=35.00M,
-                    ShortDescription ="Lorem Ipsum",
+                    ShortDescription ="Our Special Cake",
                     LongDescription ="Icing carrot cake jelly-o cheesecake. tootsie roll oat cake pie chocolate bar cookie dragée brownie. Lollipop cotton candy cake bear claw oat cake.dragée gummies.",
                     Category = categories[0],
                     ImageUrl ="/img/vanilla-cake4.jpg",
