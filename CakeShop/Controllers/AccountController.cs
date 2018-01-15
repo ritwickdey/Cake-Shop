@@ -89,5 +89,12 @@ namespace CakeShop.Controllers
 
             return View(registerViewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout(string returnUrl)
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect(returnUrl ?? "/");
+        }
     }
 }
