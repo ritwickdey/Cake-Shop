@@ -1,4 +1,5 @@
 ﻿using CakeShop.Core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -91,6 +92,7 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Logout(string returnUrl)
         {
             await _signInManager.SignOutAsync();

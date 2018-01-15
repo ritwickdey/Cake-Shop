@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using CakeShop.Core.Dto;
 using CakeShop.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CakeShop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IShoppingCartService _shoppingCartService;
@@ -19,12 +21,15 @@ namespace CakeShop.Controllers
             _mapper = mapper;
             _orderRepository = orderRepository;
         }
+
+
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Checkout([FromForm]OrderDto orderDto)
         {
             if (!ModelState.IsValid)
@@ -48,6 +53,7 @@ namespace CakeShop.Controllers
 
             return RedirectToAction("CheckoutComplete");
         }
+
 
         public IActionResult CheckoutComplete()
         {
