@@ -4,6 +4,7 @@ using CakeShop.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,10 @@ namespace CakeShop
             services.AddAutoMapper();
 
             services.AddMemoryCache();
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<CakeShopDbContext>();
+
             //services.AddSession();
 
         }
@@ -52,6 +57,8 @@ namespace CakeShop
             app.UseStatusCodePages();
             //app.UseSession();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

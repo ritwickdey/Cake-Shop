@@ -1,9 +1,11 @@
 ﻿using CakeShop.Core.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CakeShop.Persistence
 {
-    public class CakeShopDbContext : DbContext
+    public class CakeShopDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Cake> Cakes { get; set; }
         public DbSet<Category> Categories { get; set; }
