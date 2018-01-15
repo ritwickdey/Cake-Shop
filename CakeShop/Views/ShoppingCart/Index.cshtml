@@ -27,7 +27,22 @@
         {
             <tr>
                 <td>@item.Cake.Name</td>
-                <td>@item.Qty</td>
+                <td>
+                    <form class="d-inline align-middle" asp-action="RemoveFromShoppingCart"
+                          asp-controller="ShoppingCart"
+                          asp-route-cakeId="@item.CakeId"
+                          method="post">
+                        <button class="btn fa fa-minus fa-small" aria-hidden="true"></button>
+                    </form>
+                    <span style="padding:1px 10px">@item.Qty</span>
+                    <form class="d-inline align-middle" asp-action="AddToShoppingCart"
+                          asp-controller="ShoppingCart"
+                          asp-route-cakeId="@item.CakeId"
+                          method="post">
+                        <button class="btn fa fa-plus fa-small" aria-hidden="true"></button>
+                    </form>
+
+                </td>
                 <td>@item.Cake.Price.ToString("c")</td>
                 <td>@((item.Cake.Price * item.Qty).ToString("c"))</td>
             </tr>
@@ -50,7 +65,7 @@
             </td>
             <td colspan="2"></td>
             <td class="text-center">
-                <a class="btn buy-now-btn" asp-action="checkout" asp-controller="order">
+                <a class="btn buy-now-btn float-right" asp-action="checkout" asp-controller="order">
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                     Checkout
                 </a>

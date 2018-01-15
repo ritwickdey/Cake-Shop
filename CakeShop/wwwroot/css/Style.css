@@ -101,6 +101,11 @@ main.container {
         box-shadow: rgba(0, 0, 0, 0.35) 4px 3px 7px 0px;
     }
 
+.btn-no-effect:hover {
+    transform: scale(1);
+    box-shadow: none;
+}
+
 .btn:focus {
     outline: none;
     box-shadow: none;
@@ -152,6 +157,12 @@ main.container {
 .no-padding-margin {
     margin:0;
     padding:0;
+}
+
+.fa-small {
+    font-size: 12px;
+    vertical-align:middle;
+    transform: translate(0%, -25%);
 }
 
 @media(max-width:575px)

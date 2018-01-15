@@ -46,6 +46,20 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> RemoveFromShoppingCart(int cakeId)
+        {
+            var selectedCake = await _cakeRepository.GetCakeById(cakeId);
+            if (selectedCake == null)
+            {
+                return NotFound();
+            }
+
+            await _shoppingCart.RemoveFromCartAsync(selectedCake);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> RemoveAllCart()
         {
             await _shoppingCart.ClearCartAsync();
