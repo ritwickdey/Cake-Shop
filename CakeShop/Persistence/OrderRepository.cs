@@ -1,4 +1,6 @@
-﻿using CakeShop.Core.Models;
+﻿using CakeShop.Core.Dto;
+using CakeShop.Core.Models;
+using CakeShop.Core.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -39,17 +41,68 @@ namespace CakeShop.Persistence
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+        public async Task<IEnumerable<MyOrderViewModel>> GetAllOrdersAsync()
         {
             return await _context.Orders
                 .Include(e => e.OrderDetails)
+                .ThenInclude(e => e.Cake)
+                .Select(e => new MyOrderViewModel
+                {
+                    OrderPlacedTime = e.OrderPlacedTime,
+                    OrderTotal = e.OrderTotal,
+                    OrderPlaceDetails = new OrderDto
+                    {
+                        AddressLine1 = e.AddressLine1,
+                        AddressLine2 = e.AddressLine2,
+                        City = e.City,
+                        Country = e.Country,
+                        Email = e.Email,
+                        FirstName = e.FirstName,
+                        LastName = e.LastName,
+                        PhoneNumber = e.PhoneNumber,
+                        State = e.State,
+                        ZipCode = e.ZipCode
+                    },
+                    CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
+                    {
+                        Name = o.Cake.Name,
+                        Price = o.Cake.Price,
+                        Qty = o.Qty
+                    })
+                })
                 .ToListAsync();
+
         }
-        public async Task<IEnumerable<Order>> GetAllOrdersAsync(string userId)
+        public async Task<IEnumerable<MyOrderViewModel>> GetAllOrdersAsync(string userId)
         {
             return await _context.Orders
-                .Include(e => e.OrderDetails)
                 .Where(e => e.UserId == userId)
+                .Include(e => e.OrderDetails)
+                .ThenInclude(e => e.Cake)
+                .Select(e => new MyOrderViewModel
+                {
+                    OrderPlacedTime = e.OrderPlacedTime,
+                    OrderTotal = e.OrderTotal,
+                    OrderPlaceDetails = new OrderDto
+                    {
+                        AddressLine1 = e.AddressLine1,
+                        AddressLine2 = e.AddressLine2,
+                        City = e.City,
+                        Country = e.Country,
+                        Email = e.Email,
+                        FirstName = e.FirstName,
+                        LastName = e.LastName,
+                        PhoneNumber = e.PhoneNumber,
+                        State = e.State,
+                        ZipCode = e.ZipCode
+                    },
+                    CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
+                    {
+                        Name = o.Cake.Name,
+                        Price = o.Cake.Price,
+                        Qty = o.Qty
+                    })
+                })
                 .ToListAsync();
         }
     }
