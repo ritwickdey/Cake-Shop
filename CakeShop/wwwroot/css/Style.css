@@ -1,6 +1,7 @@
 ﻿:root {
-    --color1: #F0433A;
-    --color2: #820333;
+    --color1: #D95100;
+    --color2: #F53935;
+    --color3: #e29364;
 }
 
 body {
@@ -17,6 +18,12 @@ body {
     cursor:pointer;
 }
 
+.card-short-description {
+    margin: 2px 0;
+    clear: both;
+    display: block;
+}
+
 .card-img-top {
     height: 180px;
     min-width: 238px;
@@ -25,6 +32,11 @@ body {
 .card:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 7px 10px 14px 0px;
     transform: scale(1.05);
+}
+
+.badge-warning {
+    color: #212529;
+    background-color: #fee900;
 }
 
 .carousel-item img {
@@ -36,7 +48,7 @@ main.container {
 }
 
 .carousel-caption {
-    background-color:var(--color1);
+    background-color:var(--color2);
     width: 100%;
     position: absolute;
     left: 0;
@@ -44,7 +56,7 @@ main.container {
 }
 .navbar {
     background-color: var(--color2);
-    border-bottom: 3px solid var(--color1);
+    border-bottom: 3px solid var(--color3);
 }
 .navbar .navbar-nav {
     margin-top:2px;
@@ -69,7 +81,7 @@ main.container {
     width: 100%;
     min-height: 35px;
     color: #fff;
-    border-top: 3px solid var(--color1);
+    border-top: 3px solid var(--color3);
 }
 .footer p {
     margin: 0.5rem auto;

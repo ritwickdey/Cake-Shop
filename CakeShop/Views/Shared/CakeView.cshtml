@@ -4,11 +4,11 @@
     <div class="card" style="" onclick="javascript:window.location.href='/cakes/details/@Model.Id'">
         <img class="card-img-top" src="@Model.ImageThumbnailUrl" alt="@Model.Name">
         <div class="card-body">
-            <h5 class="card-title">
+            <h5 class="card-title d-inline float-left">
                 @Model.Name
             </h5>
-            <p class="card-text">@Model.Price.ToString("c")</p>
-            <p class="card-text"><i>@Model.ShortDescription</i></p>
+            <p class="card-text d-inline float-right">@Model.Price.ToString("c")</p>
+            <p class="card-text card-short-description"><i>@Model.ShortDescription</i></p>
             <form asp-action="AddToShoppingCart"
                   asp-controller="ShoppingCart"
                   asp-route-cakeId="@Model.Id"
