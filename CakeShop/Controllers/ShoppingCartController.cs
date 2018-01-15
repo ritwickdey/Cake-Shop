@@ -44,6 +44,7 @@ namespace CakeShop.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public async Task<IActionResult> RemoveAllCart()
         {
             await _shoppingCart.ClearCartAsync();

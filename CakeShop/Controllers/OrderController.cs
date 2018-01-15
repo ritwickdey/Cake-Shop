@@ -29,7 +29,6 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Checkout([FromForm]OrderDto orderDto)
         {
             if (!ModelState.IsValid)

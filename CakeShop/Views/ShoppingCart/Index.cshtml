@@ -3,6 +3,16 @@
     ViewData["Title"] = "Cart";
 }
 <h2>Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </h2>
+
+
+@if (Model.ShoppingCart.ShoppingCartItems?.Count() <= 0)
+{
+    <br />
+    <h6>Opps! Your Cart is empty!</h6>
+    return;
+}
+
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,10 +40,13 @@
         </tr>
         <tr style="border:0">
             <td>
-                <a class="btn btn-link text-dark" asp-action="RemoveAllCart">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                    Clear Cart
-                </a>
+                <form asp-action="RemoveAllCart" method="post">
+                    <button class="btn btn-link text-dark" asp-action="RemoveAllCart">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                        Clear Cart
+                    </button>
+                </form>
+
             </td>
             <td colspan="2"></td>
             <td class="text-center">
