@@ -4,6 +4,7 @@ using CakeShop.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CakeShop.Controllers
@@ -15,13 +16,15 @@ namespace CakeShop.Controllers
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
 
-        public OrderController(IShoppingCartService shoppingCartService, IMapper mapper, IOrderRepository orderRepository)
+        public OrderController(
+            IShoppingCartService shoppingCartService,
+            IMapper mapper,
+            IOrderRepository orderRepository)
         {
             _shoppingCartService = shoppingCartService;
             _mapper = mapper;
             _orderRepository = orderRepository;
         }
-
 
         public IActionResult Checkout()
         {
@@ -45,6 +48,7 @@ namespace CakeShop.Controllers
             }
 
             var order = _mapper.Map<OrderDto, Order>(orderDto);
+            order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             await _orderRepository.CreateOrderAsync(order);
 
             await _shoppingCartService.ClearCartAsync();
