@@ -104,3 +104,7 @@ main.container {
     .validation-summary-errors > ul:last-child {
         margin: 4px;
     }
+.no-padding-margin {
+    margin:0;
+    padding:0;
+}

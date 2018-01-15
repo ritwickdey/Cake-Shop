@@ -1,0 +1,16 @@
+﻿<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Hi, @(User.Identity.Name ?? "Guest")!
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a asp-action="login" asp-controller="account" class="dropdown-item">Login</a>
+        <a asp-action="register" asp-controller="account" class="dropdown-item">Register</a>
+    }
+    else
+    {
+        <form method="post" asp-action="logout" asp-controller="account" class="no-padding-margin dropdown-item">
+            <button class="btn dropdown-item">logout</button>
+        </form>
+    }
+</div>

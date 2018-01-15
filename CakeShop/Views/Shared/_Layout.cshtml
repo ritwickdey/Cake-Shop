@@ -29,7 +29,9 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    @Html.Partial("Category")
+                    <li class="nav-item dropdown">
+                        @Html.Partial("Category")
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="contact" asp-action="">Contact Us</a>
                     </li>
@@ -41,8 +43,10 @@
                             Cart
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             @await Component.InvokeAsync("ShoppingCartSummary")
-
                         </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        @Html.Partial("LoginLogoutPartial")
                     </li>
                 </ul>
 
