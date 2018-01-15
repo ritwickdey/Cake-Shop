@@ -1,6 +1,7 @@
 ﻿using CakeShop.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CakeShop
@@ -14,7 +15,8 @@ namespace CakeShop
             using (var scope = host.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<CakeShopDbContext>();
-                DbInitializer.SeedDatabase(context);
+                var usermanger = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                DbInitializer.SeedDatabase(context, usermanger);
             }
             host.Run();
         }

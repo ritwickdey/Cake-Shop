@@ -1,4 +1,5 @@
 ﻿using CakeShop.Core.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace CakeShop.Persistence
 {
     public static class DbInitializer
     {
-        public static void SeedDatabase(CakeShopDbContext context)
+        public static void SeedDatabase(CakeShopDbContext context, UserManager<IdentityUser> _userManager)
         {
             System.Console.WriteLine("Seeding... - Start");
 
@@ -86,6 +87,19 @@ namespace CakeShop.Persistence
             {
                 context.Categories.AddRange(categories);
                 context.Cakes.AddRange(cakes);
+                context.SaveChanges();
+            }
+
+
+            if (!context.Users.Any())
+            {
+                var usr = new IdentityUser
+                {
+                    Email = "EXAMPLE@EXAMPLE.COM",
+                    UserName = "EXAMPLE@EXAMPLE.COM"
+                };
+                _userManager.CreateAsync(usr, "Passw@rd!123");
+
                 context.SaveChanges();
             }
 
