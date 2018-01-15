@@ -1,20 +1,20 @@
 ﻿@model Cake
 
-<div class="col-md-4 col-sm-8">
-    <div class="card" style="">
+<div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card" style="" onclick="javascript:window.location.href='/cakes/details/@Model.Id'">
         <img class="card-img-top" src="@Model.ImageThumbnailUrl" alt="@Model.Name">
         <div class="card-body">
             <h5 class="card-title">
-                <a asp-controller="cakes" asp-action="details" asp-route-id="@Model.Id">@Model.Name</a>
+                @Model.Name
             </h5>
             <p class="card-text">@Model.Price.ToString("c")</p>
-            <p class="card-text">@Model.ShortDescription</p>
+            <p class="card-text"><i>@Model.ShortDescription</i></p>
             <form asp-action="AddToShoppingCart"
                   asp-controller="ShoppingCart"
                   asp-route-cakeId="@Model.Id"
                   method="post">
 
-                <button class="btn btn-primary buy-now-btn">Add to Cart</button>
+                <button class="btn btn-primary buy-now-btn float-right">Add to Cart</button>
             </form>
 
         </div>

@@ -5,11 +5,20 @@
 
 .card {
     margin: 25px 0;
+    min-width: 242px;
+    box-shadow: rgba(0, 0, 0, 0.25) 3px 5px 10px 0px;
+    transition: all .3s ease-in-out;
+    cursor:pointer;
 }
 
 .card-img-top {
     height: 180px;
-    min-width: 242px;
+    min-width: 238px;
+}
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 7px 10px 14px 0px;
+    transform: scale(1.05);
 }
 
 .carousel-item img {
@@ -112,4 +121,11 @@ main.container {
 .no-padding-margin {
     margin:0;
     padding:0;
+}
+
+@media(max-width:575px)
+{
+    .card {
+        margin: 10px 40px;
+    }
 }
