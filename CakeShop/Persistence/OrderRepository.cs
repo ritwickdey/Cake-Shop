@@ -1,5 +1,7 @@
 ﻿using CakeShop.Core.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,6 +37,20 @@ namespace CakeShop.Persistence
             }));
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync()
+        {
+            return await _context.Orders
+                .Include(e => e.OrderDetails)
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<Order>> GetAllOrdersAsync(string userId)
+        {
+            return await _context.Orders
+                .Include(e => e.OrderDetails)
+                .Where(e => e.UserId == userId)
+                .ToListAsync();
         }
     }
 }

@@ -62,5 +62,13 @@ namespace CakeShop.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> MyOrder()
+        {
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var orders = await _orderRepository.GetAllOrdersAsync(userId);
+            return View(orders);
+        }
     }
 }

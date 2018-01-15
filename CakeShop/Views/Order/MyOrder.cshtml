@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Order>
+<h2>My Orders</h2>
+
+@if (Model?.Count() <= 0)
+{
+    <div>
+        <p>No Order so far! Go ahead and place some order.</p>
+    </div>
+    return;
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Billing Address</th>
+            <th>Contact</th>
+            <th>Order Summary</th>
+            <th>Total Qty</th>
+            <th>Total Ammount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int count = 1; }
+
+
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@(count++)</td>
+                <td>
+                    <div>
+                        @order.FirstName @order.LastName
+                    </div>
+                    <div>
+                        @order.AddressLine1
+                    </div>
+                    <div>
+                        @order.AddressLine2
+                    </div>
+                    <div>
+                        @order.City
+                    </div>
+                    <div>
+                        @order.State
+                    </div>
+                    <div>
+                        @order.ZipCode
+                    </div>
+
+                </td>
+
+                <td>
+                    <div>Phone: @order.PhoneNumber</div>
+                    <div>Email: @order.Email</div>
+                </td>
+
+                <td>
+                    @foreach (var item in order.OrderDetails)
+                    {
+                        <div>
+                            @item.Price.ToString("c") * @item.Qty
+                        </div>
+                    }
+
+                </td>
+                <td>
+                    @order.OrderDetails.Select(e => e.Qty)?.Sum()
+                </td>
+
+                <td>
+                    @order.OrderTotal.ToString("c")
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
