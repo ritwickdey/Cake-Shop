@@ -26,8 +26,13 @@ namespace CakeShop.Controllers
             _orderRepository = orderRepository;
         }
 
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
+            var cartItems = await _shoppingCartService.GetShoppingCartItemsAsync();
+            if (cartItems?.Count() <= 0)
+            {
+                return Redirect("/shoppingcart");
+            }
             return View();
         }
 
@@ -54,14 +59,9 @@ namespace CakeShop.Controllers
             await _shoppingCartService.ClearCartAsync();
 
 
-            return RedirectToAction("CheckoutComplete");
+            return View("CheckoutComplete");
         }
 
-
-        public IActionResult CheckoutComplete()
-        {
-            return View();
-        }
 
         public async Task<IActionResult> MyOrder()
         {
