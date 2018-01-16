@@ -48,6 +48,12 @@ namespace CakeShop
 
             //services.AddSession();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Account/UnAuthorized";
+            });
+
         }
 
 

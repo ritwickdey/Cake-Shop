@@ -28,6 +28,7 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromForm]LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -58,6 +59,7 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register([FromForm]RegisterViewModel registerViewModel)
         {
             if (!ModelState.IsValid)
@@ -93,10 +95,16 @@ namespace CakeShop.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> Logout(string returnUrl)
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return Redirect(returnUrl ?? "/");
+            return Redirect("/");
+        }
+
+        public async Task<IActionResult> UnAuthorized()
+        {
+            await Logout();
+            return RedirectToAction("Login");
         }
     }
 }
