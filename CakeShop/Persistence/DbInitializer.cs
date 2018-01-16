@@ -7,7 +7,7 @@ namespace CakeShop.Persistence
 {
     public static class DbInitializer
     {
-        public static void SeedDatabase(CakeShopDbContext context, UserManager<IdentityUser> _userManager)
+        public static void SeedDatabase(CakeShopDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             System.Console.WriteLine("Seeding... - Start");
 
@@ -91,20 +91,37 @@ namespace CakeShop.Persistence
             }
 
 
+            IdentityUser usr = null;
+            string userEmail = "EXAMPLE@EXAMPLE.COM";
+            string userName = "EXAMPLE";
+
             if (!context.Users.Any())
             {
-                var usr = new IdentityUser
+                usr = new IdentityUser
                 {
-                    Email = "EXAMPLE@EXAMPLE.COM",
-                    UserName = "EXAMPLE@EXAMPLE.COM"
+                    Email = userEmail,
+                    UserName = userName
                 };
-                _userManager.CreateAsync(usr, "Passw@rd!123");
-
-                context.SaveChanges();
+                userManager.CreateAsync(usr, "Passw@rd!123");
             }
 
-            System.Console.WriteLine("Seeding... - End");
+            if (!context.UserRoles.Any())
+            {
+                roleManager.CreateAsync(new IdentityRole("Admin"));
 
+            }
+            if (usr == null)
+            {
+                usr = userManager.FindByEmailAsync(userEmail).Result;
+            }
+            if (!userManager.IsInRoleAsync(usr, "Admin").Result)
+            {
+                userManager.AddToRoleAsync(usr, "Admin");
+            }
+
+            context.SaveChanges();
+
+            System.Console.WriteLine("Seeding... - End");
         }
 
     }

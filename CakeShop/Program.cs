@@ -16,7 +16,8 @@ namespace CakeShop
             {
                 var context = scope.ServiceProvider.GetRequiredService<CakeShopDbContext>();
                 var usermanger = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                DbInitializer.SeedDatabase(context, usermanger);
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                DbInitializer.SeedDatabase(context, usermanger, roleManager);
             }
             host.Run();
         }
