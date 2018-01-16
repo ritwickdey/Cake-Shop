@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyOrderViewModel>
-<h2>My Orders</h2>
+<h2>@(ViewBag.ActionTitle ?? "My Orders")</h2>
 
 @if (Model?.Count() <= 0)
 {
@@ -22,60 +22,60 @@
 
         @foreach (var order in Model)
         {
-            <tr>
+        <tr>
 
-                <td class="text-justify">
-                    <div>
-                        @order.OrderPlaceDetails.FirstName @order.OrderPlaceDetails.LastName
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.AddressLine1
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.AddressLine2
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.City
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.State
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.ZipCode
-                    </div>
-                    <div>@order.OrderPlaceDetails.PhoneNumber</div>
-                    <div>@order.OrderPlaceDetails.Email</div>
+            <td class="text-justify">
+                <div>
+                    @order.OrderPlaceDetails.FirstName @order.OrderPlaceDetails.LastName
+                </div>
+                <div>
+                    @order.OrderPlaceDetails.AddressLine1
+                </div>
+                <div>
+                    @order.OrderPlaceDetails.AddressLine2
+                </div>
+                <div>
+                    @order.OrderPlaceDetails.City
+                </div>
+                <div>
+                    @order.OrderPlaceDetails.State
+                </div>
+                <div>
+                    @order.OrderPlaceDetails.ZipCode
+                </div>
+                <div>@order.OrderPlaceDetails.PhoneNumber</div>
+                <div>@order.OrderPlaceDetails.Email</div>
 
-                </td>
+            </td>
 
-                <td>
-                    @order.OrderPlacedTime.Date.ToString("dd/MM/yyyy")
-                </td>
+            <td>
+                @order.OrderPlacedTime.Date.ToString("dd/MM/yyyy")
+            </td>
 
-                <td>
-                    <table class="table">
-                        <tbody>
-                            @foreach (var item in order.CakeOrderInfos)
+            <td>
+                <table class="table">
+                    <tbody>
+                        @foreach (var item in order.CakeOrderInfos)
                             {
-                                <tr>
-                                    <td>
-                                        @item.Name
-                                    </td>
-                                    <td>
-                                        @item.Price.ToString("c") * @item.Qty
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Price.ToString("c") * @item.Qty
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
 
                             }
-                        </tbody>
+                    </tbody>
 
-                    </table>
-                </td>
-                <td>
-                    @order.OrderTotal.ToString("c")
-                </td>
-            </tr>
+                </table>
+            </td>
+            <td>
+                @order.OrderTotal.ToString("c")
+            </td>
+        </tr>
 
         }
 
