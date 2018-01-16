@@ -71,7 +71,7 @@ namespace CakeShop.Controllers
             return View(orders);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllOrders()
         {
             ViewBag.ActionTitle = "All Orders";
