@@ -24,6 +24,7 @@
                 <span asp-validation-for="Password"></span>
             </div>
             <button class="btn buy-now-btn">Register</button>
+            <a asp-action="login" asp-route-returnUrl="@Model.ReturnUrl" class="float-right">Already have an account? login here!</a>
         </form>
     </div>
 </div>
