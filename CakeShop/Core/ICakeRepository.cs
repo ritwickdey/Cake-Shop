@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CakeShop.Core.Dto;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CakeShop.Core.Models
@@ -9,5 +10,7 @@ namespace CakeShop.Core.Models
         Task<IEnumerable<Cake>> GetCakesOfTheWeek();
 
         Task<Cake> GetCakeById(int cakeId);
+
+        Task<IEnumerable<CakeNameIdDto>> GetAllCakesNameId();
     }
 }

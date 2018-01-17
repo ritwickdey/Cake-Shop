@@ -1,4 +1,5 @@
-﻿using CakeShop.Core.Models;
+﻿using CakeShop.Core.Dto;
+using CakeShop.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace CakeShop.Persistence
         {
             _context = context;
         }
+
 
         public async Task<Cake> GetCakeById(int cakeId)
         {
@@ -43,5 +45,17 @@ namespace CakeShop.Persistence
                 .Include(e => e.Category)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<CakeNameIdDto>> GetAllCakesNameId()
+        {
+            return await _context.Cakes
+                 .Select(e => new CakeNameIdDto
+                 {
+                     Id = e.Id,
+                     Name = e.Name
+                 })
+                 .ToListAsync();
+        }
+
     }
 }

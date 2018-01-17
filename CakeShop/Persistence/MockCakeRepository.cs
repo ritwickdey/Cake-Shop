@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CakeShop.Core.Dto;
 
 namespace CakeShop.Persistence
 {
@@ -30,6 +31,11 @@ namespace CakeShop.Persistence
         }
 
         public Task<IEnumerable<Cake>> GetCakesOfTheWeek()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<CakeNameIdDto>> GetAllCakesNameId()
         {
             throw new System.NotImplementedException();
         }
