@@ -2,6 +2,7 @@
 using CakeShop.Core;
 using CakeShop.Core.Dto;
 using CakeShop.Core.Models;
+using CakeShop.Core.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -16,17 +17,20 @@ namespace CakeShop.Controllers
         private readonly ICakeRepository _cakeRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICategoryRepository _categoryRepository;
 
         public AdminController(
             IOrderRepository orderRepository,
             ICakeRepository cakeRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            ICategoryRepository categoryRepository)
         {
             _orderRepository = orderRepository;
             _cakeRepository = cakeRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _categoryRepository = categoryRepository;
         }
 
         [HttpGet("allOrders")]
@@ -49,7 +53,13 @@ namespace CakeShop.Controllers
         {
             var cake = await _cakeRepository.GetCakeById(id);
             var cakeDto = _mapper.Map<Cake, CakeDto>(cake);
-            return View(cakeDto);
+            var category = await _categoryRepository.GetCategories();
+
+            return View(new CakeCreateUpdateViewModel
+            {
+                Categories = category,
+                CakeDto = cakeDto
+            });
         }
 
         [HttpPost("edit/{id}")]
@@ -57,12 +67,16 @@ namespace CakeShop.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(cakeDto);
+                var category = await _categoryRepository.GetCategories();
+                return View(new CakeCreateUpdateViewModel
+                {
+                    Categories = category,
+                    CakeDto = cakeDto
+                });
             }
             var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
             _cakeRepository.UpdateCake(cake);
             await _unitOfWork.CompleteAsync();
-
 
             return RedirectToAction("ManageCakes");
         }
