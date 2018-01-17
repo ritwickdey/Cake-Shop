@@ -48,6 +48,34 @@ namespace CakeShop.Controllers
             return View(cakes);
         }
 
+        [HttpGet("add")]
+        public async Task<IActionResult> AddCake()
+        {
+            var category = await _categoryRepository.GetCategories();
+            return View(new CakeCreateUpdateViewModel
+            {
+                Categories = category
+            });
+        }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddCake(CakeDto cakeDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                var category = await _categoryRepository.GetCategories();
+                return View(new CakeCreateUpdateViewModel
+                {
+                    CakeDto = cakeDto,
+                    Categories = category
+                });
+            }
+            var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
+            await _cakeRepository.AddCakeAsync(cake);
+            await _unitOfWork.CompleteAsync();
+            return RedirectToAction("ManageCakes");
+        }
+
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> EditCake(int id)
         {
@@ -79,6 +107,14 @@ namespace CakeShop.Controllers
             await _unitOfWork.CompleteAsync();
 
             return RedirectToAction("ManageCakes");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCake(int id)
+        {
+            _cakeRepository.Delete(id);
+            await _unitOfWork.CompleteAsync();
+            return Ok();
         }
 
 

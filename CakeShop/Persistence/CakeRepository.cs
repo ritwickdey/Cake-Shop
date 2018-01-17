@@ -62,5 +62,16 @@ namespace CakeShop.Persistence
         {
             _context.Cakes.Update(cake);
         }
+
+        public async Task AddCakeAsync(Cake cake)
+        {
+            await _context.Cakes.AddAsync(cake);
+        }
+
+        public void Delete(int id)
+        {
+            var cake = new Cake { Id = id };
+            _context.Entry(cake).State = EntityState.Deleted;
+        }
     }
 }

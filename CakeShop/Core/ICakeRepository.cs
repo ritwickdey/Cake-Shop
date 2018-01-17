@@ -14,5 +14,7 @@ namespace CakeShop.Core.Models
         Task<IEnumerable<CakeNameIdDto>> GetAllCakesNameId();
 
         void UpdateCake(Cake cake);
+        Task AddCakeAsync(Cake cake);
+        void Delete(int id);
     }
 }

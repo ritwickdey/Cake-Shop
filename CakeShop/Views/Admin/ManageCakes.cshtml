@@ -4,6 +4,10 @@
 }
 <h2>Manage Cakes</h2>
 <br />
+<div>
+    <a asp-action="AddCake" class="btn buy-now-btn">Add New Cake</a>
+</div>
+<br />
 <table class="table ">
     <thead>
         <tr>
@@ -14,14 +18,38 @@
     <tbody>
         @foreach (var cake in Model)
         {
-            <tr>
+            <tr id="cake-@cake.Id">
                 <td>@cake.Name</td>
                 <td>
-                    <a asp-action="EditCake" asp-route-id="@cake.Id">Edit</a>
+                    <a class="btn btn-link btn-no-effect" asp-action="EditCake" asp-route-id="@cake.Id">Edit </a>
                     |
-                    <a href="#">Delete</a>
+                    <button class="btn btn-link btn-no-effect deleteBtn" data-id="@cake.Id">Delete</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section scripts {
+    <script>
+
+        $(".deleteBtn").click((e) => {
+            const id = $(e.target).data("id");
+            if (!confirm("Are you sure to delete?"))
+                return;
+
+            $.ajax({
+                url: '/admin/manageCakes/' + id,
+                type: 'DELETE',
+                success: () => {
+                    const target = $("#cake-" + id);
+                    $(target).fadeOut(500, () => $(target).remove());
+                },
+                error: (e) => {
+                    alert("Somthing Went Wrong", e);
+                }
+            });
+        });
+
+    </script>
+}
