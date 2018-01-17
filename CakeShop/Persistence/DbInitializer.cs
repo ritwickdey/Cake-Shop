@@ -13,9 +13,9 @@ namespace CakeShop.Persistence
 
             var categories = new List<Category>
             {
-                new Category { Name = "Vanilla Cakes",  Description = "Colorful & Testy"  },
-                new Category { Name = "Chocolate Cakes", Description =  "Yaamy! & Chocolatey" },
-                new Category { Name = "Fruit Cakes",  Description = "All Fruity cakes" }
+                new Category { Name = "Vanilla Cakes"},
+                new Category { Name = "Chocolate Cakes" },
+                new Category { Name = "Fruit Cakes"}
             };
 
             var cakes = new List<Cake>
