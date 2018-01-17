@@ -1,5 +1,5 @@
 ﻿<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Hi, @(User.Identity.Name ?? "Guest")!
+    Hi, @(User.Identity.Name ?? "User")!
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     @if (!User.Identity.IsAuthenticated)
@@ -13,5 +13,12 @@
         <form method="post" asp-action="logout" asp-controller="account" class="no-padding-margin dropdown-item">
             <button class="btn dropdown-item btn-no-effect">logout</button>
         </form>
+
+        if (User.IsInRole("Admin"))
+        {
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="allOrders" asp-controller="admin">All Orders</a>
+        }
     }
 </div>
