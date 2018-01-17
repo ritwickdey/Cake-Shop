@@ -33,7 +33,7 @@ namespace CakeShop.Persistence
             await _context.OrderDetails.AddRangeAsync(shoppingCartItems.Select(e => new OrderDetail
             {
                 Qty = e.Qty,
-                CakeId = e.CakeId,
+                CakeName = e.Cake.Name,
                 OrderId = order.Id,
                 Price = e.Cake.Price
             }));
@@ -45,7 +45,6 @@ namespace CakeShop.Persistence
         {
             return await _context.Orders
                 .Include(e => e.OrderDetails)
-                .ThenInclude(e => e.Cake)
                 .Select(e => new MyOrderViewModel
                 {
                     OrderPlacedTime = e.OrderPlacedTime,
@@ -65,7 +64,7 @@ namespace CakeShop.Persistence
                     },
                     CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
                     {
-                        Name = o.Cake.Name,
+                        Name = o.CakeName,
                         Price = o.Price,
                         Qty = o.Qty
                     })
@@ -78,7 +77,6 @@ namespace CakeShop.Persistence
             return await _context.Orders
                 .Where(e => e.UserId == userId)
                 .Include(e => e.OrderDetails)
-                .ThenInclude(e => e.Cake)
                 .Select(e => new MyOrderViewModel
                 {
                     OrderPlacedTime = e.OrderPlacedTime,
@@ -98,7 +96,7 @@ namespace CakeShop.Persistence
                     },
                     CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
                     {
-                        Name = o.Cake.Name,
+                        Name = o.CakeName,
                         Price = o.Price,
                         Qty = o.Qty
                     })

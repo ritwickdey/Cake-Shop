@@ -11,9 +11,10 @@ using System;
 namespace CakeShop.Migrations
 {
     [DbContext(typeof(CakeShopDbContext))]
-    partial class CakeShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180117193421_Removed_CakeId_Prop_From_OrderDetails")]
+    partial class Removed_CakeId_Prop_From_OrderDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
