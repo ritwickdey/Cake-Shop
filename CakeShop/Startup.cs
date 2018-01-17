@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CakeShop.Core;
 using CakeShop.Core.Models;
 using CakeShop.Persistence;
 using Microsoft.AspNetCore.Builder;
@@ -23,12 +24,13 @@ namespace CakeShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<ICakeRepository, CakeRepository>();
-            services.AddTransient<ICategoryRepository, CategoryRepository>();
-            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICakeRepository, CakeRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IShoppingCartService>(sp => ShoppingCartService.GetCart(sp));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IShoppingCartService>(sp => ShoppingCartService.GetCart(sp));
 
             services.AddDbContext<CakeShopDbContext>(ctx =>
             {
