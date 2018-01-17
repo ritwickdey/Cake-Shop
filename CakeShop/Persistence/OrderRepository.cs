@@ -66,7 +66,7 @@ namespace CakeShop.Persistence
                     CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
                     {
                         Name = o.Cake.Name,
-                        Price = o.Cake.Price,
+                        Price = o.Price,
                         Qty = o.Qty
                     })
                 })
@@ -99,7 +99,7 @@ namespace CakeShop.Persistence
                     CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
                     {
                         Name = o.Cake.Name,
-                        Price = o.Cake.Price,
+                        Price = o.Price,
                         Qty = o.Qty
                     })
                 })
