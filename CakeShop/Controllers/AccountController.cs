@@ -36,7 +36,17 @@ namespace CakeShop.Controllers
                 return View(loginViewModel);
             }
 
-            var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
+            IdentityUser user = null;
+
+            if (loginViewModel.EmailOrUsername.Contains("@"))
+            {
+                user = await _userManager.FindByEmailAsync(loginViewModel.EmailOrUsername);
+            }
+            else
+            {
+                user = await _userManager.FindByNameAsync(loginViewModel.EmailOrUsername);
+            }
+
             if (user != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
@@ -78,7 +88,7 @@ namespace CakeShop.Controllers
             {
                 return await Login(new LoginViewModel
                 {
-                    Email = registerViewModel.Email,
+                    EmailOrUsername = registerViewModel.Email,
                     Password = registerViewModel.Password,
                     ReturnUrl = registerViewModel.ReturnUrl
                 });
