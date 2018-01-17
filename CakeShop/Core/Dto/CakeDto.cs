@@ -12,10 +12,12 @@ namespace CakeShop.Core.Dto
 
         [Required]
         [Display(Name = "Short Description")]
+        [MaxLength(50)]
         public string ShortDescription { get; set; }
 
         [Required]
         [Display(Name = "Long Description")]
+        [MaxLength(255)]
         public string LongDescription { get; set; }
 
         [Required]
