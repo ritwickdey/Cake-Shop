@@ -50,9 +50,9 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
     ```
 
 ## Sceenshots
-![screenshot1](./images/screenshot1.png)
-![screenshot2](./images/screenshot2.png)
-![screenshot3](./images/screenshot3.png)
-![screenshot4](./images/screenshot4.png)
-![screenshot5](./images/screenshot5.png)
-![screenshot6](./images/screenshot6.png)
+![screenshot1](./screenshots/screenshot1.png)
+![screenshot2](./screenshots/screenshot2.png)
+![screenshot3](./screenshots/screenshot3.png)
+![screenshot4](./screenshots/screenshot4.png)
+![screenshot5](./screenshots/screenshot5.png)
+![screenshot6](./screenshots/screenshot6.png)
