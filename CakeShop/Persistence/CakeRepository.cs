@@ -57,5 +57,10 @@ namespace CakeShop.Persistence
                  .ToListAsync();
         }
 
+
+        public void UpdateCake(Cake cake)
+        {
+            _context.Cakes.Update(cake);
+        }
     }
 }

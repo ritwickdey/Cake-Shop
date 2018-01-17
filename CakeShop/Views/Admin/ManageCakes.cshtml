@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CakeNameIdDto>
+@{
+    ViewData["Title"] = "ManageCakes";
+}
+<h2>Manage Cakes</h2>
+<br />
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Cake Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cake in Model)
+        {
+            <tr>
+                <td>@cake.Name</td>
+                <td>
+                    <a asp-action="EditCake" asp-route-id="@cake.Id">Edit</a>
+                    |
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

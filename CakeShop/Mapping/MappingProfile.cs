@@ -9,6 +9,9 @@ namespace CakeShop.Mapping
         public MappingProfile()
         {
             CreateMap<OrderDto, Order>();
+            CreateMap<CakeDto, Cake>();
+
+            CreateMap<Cake, CakeDto>();
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿@model CakeDto
+@{
+    ViewData["Title"] = "EditCake";
+}
+<h2>Edit Cake</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="EditCake" method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <input type="hidden" asp-for="Id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+                <input asp-for="CategoryId" class="form-control" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LongDescription"></label>
+                <textarea asp-for="LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="LongDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl"></span>
+            </div>
+            <div class="form-check form-group">
+                <input type="checkbox" class="form-check-input" asp-for="IsCakeOfTheWeek">
+                <label class="form-check-label" asp-for="IsCakeOfTheWeek"></label>
+                <span asp-validation-for="IsCakeOfTheWeek"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn buy-now-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
