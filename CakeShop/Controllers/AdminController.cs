@@ -103,6 +103,7 @@ namespace CakeShop.Controllers
                 });
             }
             var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
+            cake.Id = id;
             _cakeRepository.UpdateCake(cake);
             await _unitOfWork.CompleteAsync();
 

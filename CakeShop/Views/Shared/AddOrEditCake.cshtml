@@ -1,0 +1,52 @@
+﻿@model CakeCreateUpdateViewModel
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="CakeDto.Name"></label>
+                <input asp-for="CakeDto.Name" class="form-control" />
+                <span asp-validation-for="CakeDto.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CakeDto.CategoryId"></label>
+                <select class="custom-select" asp-for="CakeDto.CategoryId">
+                    <option value=""></option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CakeDto.CategoryId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CakeDto.ShortDescription"></label>
+                <input asp-for="CakeDto.ShortDescription" class="form-control" />
+                <span asp-validation-for="CakeDto.ShortDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CakeDto.LongDescription"></label>
+                <textarea asp-for="CakeDto.LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="CakeDto.LongDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CakeDto.Price"></label>
+                <input asp-for="CakeDto.Price" class="form-control" />
+                <span asp-validation-for="CakeDto.Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CakeDto.ImageUrl"></label>
+                <input asp-for="CakeDto.ImageUrl" class="form-control" />
+                <span asp-validation-for="CakeDto.ImageUrl"></span>
+            </div>
+            <div class="form-check form-group">
+                <input type="checkbox" class="form-check-input" asp-for="CakeDto.IsCakeOfTheWeek">
+                <label class="form-check-label" asp-for="CakeDto.IsCakeOfTheWeek"></label>
+                <span asp-validation-for="CakeDto.IsCakeOfTheWeek"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn buy-now-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
