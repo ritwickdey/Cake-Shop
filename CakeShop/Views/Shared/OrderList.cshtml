@@ -12,7 +12,6 @@
     <thead>
         <tr>
             <th>Billing Address</th>
-            <th>Date</th>
             <th>Order Summary</th>
             <th>Total Ammount</th>
         </tr>
@@ -25,18 +24,14 @@
 
                 <td class="text-justify">
                     <div>
-                        @order.OrderPlaceDetails.FirstName @order.OrderPlaceDetails.LastName
-                    </div>
-                    <div>
+                        @order.OrderPlaceDetails.FirstName @order.OrderPlaceDetails.LastName,
                         @order.OrderPlaceDetails.AddressLine1
+                        <div>
+                            @order.OrderPlaceDetails.AddressLine2
+                        </div>
                     </div>
                     <div>
-                        @order.OrderPlaceDetails.AddressLine2
-                    </div>
-                    <div>
-                        @order.OrderPlaceDetails.City
-                    </div>
-                    <div>
+                        @order.OrderPlaceDetails.City,
                         @order.OrderPlaceDetails.State
                     </div>
                     <div>
@@ -44,12 +39,13 @@
                     </div>
                     <div>@order.OrderPlaceDetails.PhoneNumber</div>
                     <div>@order.OrderPlaceDetails.Email</div>
+                    <br />
+                    <div>
+                        @order.OrderPlacedTime.Date.ToString("dd/MM/yyyy")
+                    </div>
 
                 </td>
 
-                <td>
-                    @order.OrderPlacedTime.Date.ToString("dd/MM/yyyy")
-                </td>
 
                 <td>
                     <table class="table">
