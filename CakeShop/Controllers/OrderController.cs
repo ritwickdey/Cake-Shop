@@ -70,14 +70,5 @@ namespace CakeShop.Controllers
             var orders = await _orderRepository.GetAllOrdersAsync(userId);
             return View(orders);
         }
-
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AllOrders()
-        {
-            ViewBag.ActionTitle = "All Orders";
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var orders = await _orderRepository.GetAllOrdersAsync();
-            return View("MyOrder", orders);
-        }
     }
 }
