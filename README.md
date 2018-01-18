@@ -9,16 +9,17 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 - Normal User can only can buy cakes & view their orders.
 - Managing Cart System using cookie.
 - Client Side & Server side validation,
-- Login through eighter `Username` or `Email`.
+- Cookie Based Authentication & Authorization - Not Session
+- Login through either `Username` or `Email`.
 - Responsive UI
 - Repository Pattern 
 - Application Architecture is decoupled form ORM (Entity Framework)
 
 ## Framework / Library 
 - ASP.NET Core 2.0 *(Backend)*
-- Razor View *(For generating markup)*
+- Razor View Engine *(For generating markup)*
 - Entity Framework Core *(ORM)*
-- ASP.NET Identity *(Cookie Based Athentication & Authorization - not session)*
+- ASP.NET Identity *(Cookie Based Authentication & Authorization - Not Session)*
 - AutoMapper *(For mapping into Domain Model & DTO)*
 - jQuery & Bootstap 4
 
