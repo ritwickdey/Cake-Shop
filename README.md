@@ -2,6 +2,8 @@
 
 A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 
+![screenshot1](./screenshots/screenshot1.png)
+
 ## Features 
 - Only Admin can perform Create/Edit/Delete cakes & manage Orders.
 - Normal User can only can buy cakes & view their orders.
@@ -20,6 +22,8 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 
 ## To run the project locally:
    > admin account : `admin@admin.com` and Password: `Passw@rd!123` (You can change it from `appsettings.json` before apply `update database`)
+
+   > Make sure, dotnet core SDK & npm is installed in your machine.
 
 - **Using VS2017**
      ``` 
@@ -49,7 +53,6 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
     ```
 
 ## Sceenshots
-![screenshot1](./screenshots/screenshot1.png)
 ![screenshot2](./screenshots/screenshot2.png)
 ![screenshot3](./screenshots/screenshot3.png)
 ![screenshot4](./screenshots/screenshot4.png)
