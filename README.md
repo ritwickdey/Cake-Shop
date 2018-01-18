@@ -4,13 +4,15 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 
 ![screenshot1](./screenshots/screenshot1.png)
 
-## Features 
+## APP/Code Features 
 - Only Admin can perform Create/Edit/Delete cakes & manage Orders.
 - Normal User can only can buy cakes & view their orders.
 - Managing Cart System using cookie.
 - Client Side & Server side validation,
 - Login through eighter `Username` or `Email`.
-
+- Responsive UI
+- Repository Pattern 
+- Application Architecture is decoupled form ORM (Entity Framework)
 
 ## Framework / Library 
 - ASP.NET Core 2.0 *(Backend)*
