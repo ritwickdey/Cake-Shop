@@ -6,10 +6,9 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 - Only Admin can perform Create/Edit/Delete cakes & manage Orders.
 - Normal User can only can buy cakes & view their orders.
 - Managing Cart System using cookie.
-- Client Side & Server side validation
+- Client Side & Server side validation,
+- Login through eighter `Username` or `Email`.
 
-## Demo Link :
- Live Demo: (Soon)
 
 ## Framework / Library 
 - ASP.NET Core 2.0 *(Backend)*
@@ -20,7 +19,7 @@ A sample Cake Shop Website built with ASP.NET Core (Multi-Page Application)
 - jQuery & Bootstap 4
 
 ## To run the project locally:
-   > admin account : `EXAMPLE@EXAMPLE.COM` and Password: `Passw@rd!123` (You can change it from `DbInitializer.cs` file or using SSMS)
+   > admin account : `admin@admin.com` and Password: `Passw@rd!123` (You can change it from `appsettings.json` before apply `update database`)
 
 - **Using VS2017**
      ``` 

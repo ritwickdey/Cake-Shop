@@ -1,5 +1,6 @@
 ﻿using CakeShop.Core.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,11 @@ namespace CakeShop.Persistence
 {
     public static class DbInitializer
     {
-        public static void SeedDatabase(CakeShopDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static void SeedDatabase(
+            CakeShopDbContext context,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager,
+            IConfiguration configuration)
         {
             System.Console.WriteLine("Seeding... - Start");
 
@@ -82,8 +87,9 @@ namespace CakeShop.Persistence
 
 
             IdentityUser usr = null;
-            string userEmail = "EXAMPLE@EXAMPLE.COM";
-            string userName = "EXAMPLE";
+            string userEmail = configuration["Admin:Email"] ?? "admin@admin.com";
+            string userName = configuration["Admin:Username"] ?? "admin";
+            string password = configuration["Admin:Password"] ?? "Passw@rd!123";
 
             if (!context.Users.Any())
             {
@@ -92,7 +98,7 @@ namespace CakeShop.Persistence
                     Email = userEmail,
                     UserName = userName
                 };
-                userManager.CreateAsync(usr, "Passw@rd!123");
+                userManager.CreateAsync(usr, password);
             }
 
             if (!context.UserRoles.Any())
