@@ -6,14 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cake Shop</title>
-    <environment names="Development">
-        <script src="~/dist/main.js"></script>
-    </environment>
-    <environment names="Production">
-        <script src="~/dist/main.js" asp-append-version="true"></script>
-    </environment>
 
-
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
 
@@ -30,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        @Html.Partial("Category")
+                        @await Html.PartialAsync("Category")
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="contact" asp-action="">Contact Us</a>
@@ -46,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        @Html.Partial("AccountDropDown")
+                        @await Html.PartialAsync("AccountDropDown")
                     </li>
                 </ul>
 
@@ -68,7 +64,10 @@
         @*<email address="example@example.com" content="Contact Us"></email>*@
     </footer>
 
-    @RenderSection("scripts", false)
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 
 </body>
 
