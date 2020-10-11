@@ -1,4 +1,5 @@
-﻿using CakeShop.Persistence;
+﻿using System.Threading.Tasks;
+using CakeShop.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +10,7 @@ namespace CakeShop
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = BuildWebHost(args);
 
@@ -19,7 +20,10 @@ namespace CakeShop
                 var usermanger = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var env = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-                DbInitializer.SeedDatabase(context, usermanger, roleManager, env);
+
+                context.Database.EnsureCreated();
+
+                await DbInitializer.SeedDatabaseAsync(context, usermanger, roleManager, env);
 
             }
             host.Run();

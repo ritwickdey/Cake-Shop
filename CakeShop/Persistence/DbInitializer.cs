@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CakeShop.Persistence
 {
     public static class DbInitializer
     {
-        public static void SeedDatabase(
+        public static async Task SeedDatabaseAsync(
             CakeShopDbContext context,
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
@@ -98,21 +99,21 @@ namespace CakeShop.Persistence
                     Email = userEmail,
                     UserName = userName
                 };
-                userManager.CreateAsync(usr, password);
+                await userManager.CreateAsync(usr, password);
             }
 
             if (!context.UserRoles.Any())
             {
-                roleManager.CreateAsync(new IdentityRole("Admin"));
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
 
             }
             if (usr == null)
             {
-                usr = userManager.FindByEmailAsync(userEmail).Result;
+                usr = await userManager.FindByEmailAsync(userEmail);
             }
-            if (!userManager.IsInRoleAsync(usr, "Admin").Result)
+            if (!(await userManager.IsInRoleAsync(usr, "Admin")))
             {
-                userManager.AddToRoleAsync(usr, "Admin");
+                await userManager.AddToRoleAsync(usr, "Admin");
             }
 
             context.SaveChanges();
